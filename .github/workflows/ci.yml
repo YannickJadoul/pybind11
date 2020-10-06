@@ -183,6 +183,10 @@ jobs:
     - name: Setuptools helpers test
       run: pytest tests/extra_setuptools
 
+    - name: Setup tmate debugging session
+      uses: mxschmitt/action-tmate@v3
+      if: failure()
+
 
   # Testing on clang using the excellent silkeh clang docker images
   clang:
