@@ -218,18 +218,7 @@ jobs:
       run: cmake --build build --target pytest
 
     - name: Run Valgrind on Python tests
-      run: >
-        PYTHONMALLOC=malloc
-        PYTHONPATH=build/tests
-        valgrind
-        --leak-check=full
-        --show-leak-kinds=definite,indirect
-        --errors-for-leak-kinds=definite,indirect
-        --error-exitcode=1
-        --read-var-info=yes
-        --track-origins=yes
-        --gen-suppressions=all
-        python -m pytest tests
+      run: python ./run_valgrind.py
 
 
 #   # Testing on clang using the excellent silkeh clang docker images
